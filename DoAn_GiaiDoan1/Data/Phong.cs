@@ -11,7 +11,7 @@ namespace DoAn_GiaiDoan1.Data
     {
         public int ID { get; set; }
         public string TenPhong{ get; set;}
-        public string LoaiPhongID { get; set;}
+        public int LoaiPhongID { get; set;}
         public string TrangThai { get; set;}
 
         public virtual LoaiPhong LoaiPhong { get; set; } = null!;

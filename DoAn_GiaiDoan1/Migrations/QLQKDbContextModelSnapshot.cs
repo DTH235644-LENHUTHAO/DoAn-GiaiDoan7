@@ -64,11 +64,7 @@ namespace DoAn_GiaiDoan1.Migrations
                     b.Property<int>("HoaDonID")
                         .HasColumnType("int");
 
-                    b.Property<string>("KhuyenMaiID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("KhuyenMaiID1")
+                    b.Property<int>("KhuyenMaiID")
                         .HasColumnType("int");
 
                     b.Property<decimal>("SoTienGiam")
@@ -78,7 +74,7 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     b.HasIndex("HoaDonID");
 
-                    b.HasIndex("KhuyenMaiID1");
+                    b.HasIndex("KhuyenMaiID");
 
                     b.ToTable("ChiTietKhuyenMai");
                 });
@@ -258,11 +254,7 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("LoaiPhongID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LoaiPhongID1")
+                    b.Property<int>("LoaiPhongID")
                         .HasColumnType("int");
 
                     b.Property<string>("TenPhong")
@@ -275,7 +267,7 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("LoaiPhongID1");
+                    b.HasIndex("LoaiPhongID");
 
                     b.ToTable("Phong");
                 });
@@ -355,7 +347,7 @@ namespace DoAn_GiaiDoan1.Migrations
 
                     b.HasOne("DoAn_GiaiDoan1.Data.KhuyenMai", "KhuyenMai")
                         .WithMany("ChiTietKhuyenMai")
-                        .HasForeignKey("KhuyenMaiID1")
+                        .HasForeignKey("KhuyenMaiID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -406,7 +398,7 @@ namespace DoAn_GiaiDoan1.Migrations
                 {
                     b.HasOne("DoAn_GiaiDoan1.Data.LoaiPhong", "LoaiPhong")
                         .WithMany("Phong")
-                        .HasForeignKey("LoaiPhongID1")
+                        .HasForeignKey("LoaiPhongID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

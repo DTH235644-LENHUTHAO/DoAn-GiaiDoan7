@@ -10,7 +10,7 @@ namespace DoAn_GiaiDoan1.Data
     {
         public int ID { get; set; }
         public int HoaDonID { get; set; }
-        public string KhuyenMaiID { get; set; } 
+        public int KhuyenMaiID { get; set; } 
         public decimal SoTienGiam { get; set; }
         public virtual HoaDon HoaDon { get; set; } = null!;
         public virtual KhuyenMai KhuyenMai { get; set; } = null!;

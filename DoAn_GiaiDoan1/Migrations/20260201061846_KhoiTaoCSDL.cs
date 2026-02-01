@@ -90,16 +90,15 @@ namespace DoAn_GiaiDoan1.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TenPhong = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LoaiPhongID = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TrangThai = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LoaiPhongID1 = table.Column<int>(type: "int", nullable: false)
+                    LoaiPhongID = table.Column<int>(type: "int", nullable: false),
+                    TrangThai = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Phong", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Phong_LoaiPhong_LoaiPhongID1",
-                        column: x => x.LoaiPhongID1,
+                        name: "FK_Phong_LoaiPhong_LoaiPhongID",
+                        column: x => x.LoaiPhongID,
                         principalTable: "LoaiPhong",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -218,9 +217,8 @@ namespace DoAn_GiaiDoan1.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HoaDonID = table.Column<int>(type: "int", nullable: false),
-                    KhuyenMaiID = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SoTienGiam = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    KhuyenMaiID1 = table.Column<int>(type: "int", nullable: false)
+                    KhuyenMaiID = table.Column<int>(type: "int", nullable: false),
+                    SoTienGiam = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -232,8 +230,8 @@ namespace DoAn_GiaiDoan1.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ChiTietKhuyenMai_KhuyenMai_KhuyenMaiID1",
-                        column: x => x.KhuyenMaiID1,
+                        name: "FK_ChiTietKhuyenMai_KhuyenMai_KhuyenMaiID",
+                        column: x => x.KhuyenMaiID,
                         principalTable: "KhuyenMai",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -272,9 +270,9 @@ namespace DoAn_GiaiDoan1.Migrations
                 column: "HoaDonID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChiTietKhuyenMai_KhuyenMaiID1",
+                name: "IX_ChiTietKhuyenMai_KhuyenMaiID",
                 table: "ChiTietKhuyenMai",
-                column: "KhuyenMaiID1");
+                column: "KhuyenMaiID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DatPhong_KhachHangID",
@@ -297,9 +295,9 @@ namespace DoAn_GiaiDoan1.Migrations
                 column: "DatPhongID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Phong_LoaiPhongID1",
+                name: "IX_Phong_LoaiPhongID",
                 table: "Phong",
-                column: "LoaiPhongID1");
+                column: "LoaiPhongID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SuDungDichVu_DatPhongID",
