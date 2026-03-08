@@ -11,11 +11,12 @@ namespace QuanLyQuanKaraoke.Data
     {
         public int ID {  get; set; }
         public int DatPhongID { get; set; }
+        public int? KhuyenMaiID { get; set; }
         public DateTime ThoiGianLap {  get; set; }
         public decimal TongTien {  get; set; }
 
         public virtual ObservableCollectionListSource<ChiTietHoaDon> ChiTietHoaDon { get; } = new();
-        public virtual ObservableCollectionListSource<ChiTietKhuyenMai> ChiTietKhuyenMai { get; } = new();
+        public virtual KhuyenMai KhuyenMai { get; set; } = null!;
         public virtual ObservableCollectionListSource<ThanhToan> ThanhToan { get; } = new();
 
 

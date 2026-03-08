@@ -41,10 +41,12 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
-            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             ID = new DataGridViewTextBoxColumn();
             TenKH = new DataGridViewTextBoxColumn();
             DienThoai = new DataGridViewTextBoxColumn();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            btnNhap = new Button();
+            btnXuat = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -198,11 +200,6 @@
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // sqlCommand1
-            // 
-            sqlCommand1.CommandTimeout = 30;
-            sqlCommand1.EnableOptimizedParameterBinding = false;
-            // 
             // ID
             // 
             ID.DataPropertyName = "ID";
@@ -224,11 +221,40 @@
             DienThoai.MinimumWidth = 10;
             DienThoai.Name = "DienThoai";
             // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
+            // 
+            // btnNhap
+            // 
+            btnNhap.ForeColor = Color.DeepSkyBlue;
+            btnNhap.Location = new Point(923, 1148);
+            btnNhap.Name = "btnNhap";
+            btnNhap.Size = new Size(237, 55);
+            btnNhap.TabIndex = 13;
+            btnNhap.Text = "Nhập";
+            btnNhap.UseVisualStyleBackColor = true;
+            btnNhap.Click += btnNhap_Click;
+            // 
+            // btnXuat
+            // 
+            btnXuat.ForeColor = Color.Red;
+            btnXuat.Location = new Point(603, 1147);
+            btnXuat.Name = "btnXuat";
+            btnXuat.Size = new Size(237, 55);
+            btnXuat.TabIndex = 12;
+            btnXuat.Text = "Xuất";
+            btnXuat.UseVisualStyleBackColor = true;
+            btnXuat.Click += btnXuat_Click;
+            // 
             // frmKhachHang
             // 
             AutoScaleDimensions = new SizeF(19F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1800, 1125);
+            ClientSize = new Size(1800, 1230);
+            Controls.Add(btnNhap);
+            Controls.Add(btnXuat);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
@@ -262,5 +288,7 @@
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn TenKH;
         private DataGridViewTextBoxColumn DienThoai;
+        private Button btnNhap;
+        private Button btnXuat;
     }
 }

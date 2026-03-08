@@ -48,6 +48,8 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             groupBox1 = new GroupBox();
+            btnNhap = new Button();
+            btnXuat = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -253,11 +255,35 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin nhân viên ";
             // 
+            // btnNhap
+            // 
+            btnNhap.ForeColor = Color.DeepSkyBlue;
+            btnNhap.Location = new Point(922, 1166);
+            btnNhap.Name = "btnNhap";
+            btnNhap.Size = new Size(237, 55);
+            btnNhap.TabIndex = 11;
+            btnNhap.Text = "Nhập";
+            btnNhap.UseVisualStyleBackColor = true;
+            btnNhap.Click += btnNhap_Click;
+            // 
+            // btnXuat
+            // 
+            btnXuat.ForeColor = Color.Red;
+            btnXuat.Location = new Point(602, 1165);
+            btnXuat.Name = "btnXuat";
+            btnXuat.Size = new Size(237, 55);
+            btnXuat.TabIndex = 10;
+            btnXuat.Text = "Xuất";
+            btnXuat.UseVisualStyleBackColor = true;
+            btnXuat.Click += btnXuat_Click;
+            // 
             // frmNhanVien
             // 
             AutoScaleDimensions = new SizeF(19F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1786, 1147);
+            ClientSize = new Size(1786, 1259);
+            Controls.Add(btnNhap);
+            Controls.Add(btnXuat);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
@@ -294,5 +320,7 @@
         private DataGridViewTextBoxColumn TenNV;
         private DataGridViewTextBoxColumn ChucVu;
         private DataGridViewTextBoxColumn DienThaoi;
+        private Button btnNhap;
+        private Button btnXuat;
     }
 }

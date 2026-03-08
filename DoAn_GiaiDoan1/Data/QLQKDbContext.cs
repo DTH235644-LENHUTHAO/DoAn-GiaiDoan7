@@ -17,7 +17,6 @@ namespace QuanLyQuanKaraoke.Data
         public DbSet<KhachHang> KhachHang { get; set; }
         public DbSet<HoaDon> HoaDon { get; set; }
         public DbSet<Phong> Phong { get; set; }
-        public DbSet<ChiTietKhuyenMai> ChiTietKhuyenMai { get; set; }
         public DbSet<KhuyenMai> KhuyenMai { get; set; }
         public DbSet<SuDungDichVu> SuDungDichVu { get; set; }
         public DbSet<ThanhToan> ThanhToan { get; set; }

@@ -12,7 +12,7 @@ using QuanLyQuanKaraoke.Data;
 namespace QuanLyQuanKaraoke.Migrations
 {
     [DbContext(typeof(QLQKDbContext))]
-    [Migration("20260301084948_KhoiTaoCSDL")]
+    [Migration("20260308130636_KhoiTaoCSDL")]
     partial class KhoiTaoCSDL
     {
         /// <inheritdoc />
@@ -54,35 +54,6 @@ namespace QuanLyQuanKaraoke.Migrations
                     b.HasIndex("HoaDonID");
 
                     b.ToTable("ChiTietHoaDon");
-                });
-
-            modelBuilder.Entity("QuanLyQuanKaraoke.Data.ChiTietKhuyenMai", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("GhiChu")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("HoaDonID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("KhuyenMaiID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ThoiDiemApDung")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("HoaDonID");
-
-                    b.HasIndex("KhuyenMaiID");
-
-                    b.ToTable("ChiTietKhuyenMai");
                 });
 
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.DatPhong", b =>
@@ -150,6 +121,9 @@ namespace QuanLyQuanKaraoke.Migrations
                     b.Property<int>("DatPhongID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("KhuyenMaiID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ThoiGianLap")
                         .HasColumnType("datetime2");
 
@@ -159,6 +133,8 @@ namespace QuanLyQuanKaraoke.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("DatPhongID");
+
+                    b.HasIndex("KhuyenMaiID");
 
                     b.ToTable("HoaDon");
                 });
@@ -380,25 +356,6 @@ namespace QuanLyQuanKaraoke.Migrations
                     b.Navigation("HoaDon");
                 });
 
-            modelBuilder.Entity("QuanLyQuanKaraoke.Data.ChiTietKhuyenMai", b =>
-                {
-                    b.HasOne("QuanLyQuanKaraoke.Data.HoaDon", "HoaDon")
-                        .WithMany("ChiTietKhuyenMai")
-                        .HasForeignKey("HoaDonID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("QuanLyQuanKaraoke.Data.KhuyenMai", "KhuyenMai")
-                        .WithMany("ChiTietKhuyenMai")
-                        .HasForeignKey("KhuyenMaiID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HoaDon");
-
-                    b.Navigation("KhuyenMai");
-                });
-
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.DatPhong", b =>
                 {
                     b.HasOne("QuanLyQuanKaraoke.Data.KhachHang", "KhachHang")
@@ -434,7 +391,13 @@ namespace QuanLyQuanKaraoke.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("QuanLyQuanKaraoke.Data.KhuyenMai", "KhuyenMai")
+                        .WithMany("HoaDon")
+                        .HasForeignKey("KhuyenMaiID");
+
                     b.Navigation("DatPhong");
+
+                    b.Navigation("KhuyenMai");
                 });
 
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.Phong", b =>
@@ -505,8 +468,6 @@ namespace QuanLyQuanKaraoke.Migrations
                 {
                     b.Navigation("ChiTietHoaDon");
 
-                    b.Navigation("ChiTietKhuyenMai");
-
                     b.Navigation("ThanhToan");
                 });
 
@@ -517,7 +478,7 @@ namespace QuanLyQuanKaraoke.Migrations
 
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.KhuyenMai", b =>
                 {
-                    b.Navigation("ChiTietKhuyenMai");
+                    b.Navigation("HoaDon");
                 });
 
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.LoaiPhong", b =>

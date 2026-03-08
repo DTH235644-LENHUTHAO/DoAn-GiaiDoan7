@@ -170,6 +170,7 @@ namespace QuanLyQuanKaraoke.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DatPhongID = table.Column<int>(type: "int", nullable: false),
+                    KhuyenMaiID = table.Column<int>(type: "int", nullable: true),
                     ThoiGianLap = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TongTien = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
@@ -182,6 +183,11 @@ namespace QuanLyQuanKaraoke.Migrations
                         principalTable: "DatPhong",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_HoaDon_KhuyenMai_KhuyenMaiID",
+                        column: x => x.KhuyenMaiID,
+                        principalTable: "KhuyenMai",
+                        principalColumn: "ID");
                 });
 
             migrationBuilder.CreateTable(
@@ -235,34 +241,6 @@ namespace QuanLyQuanKaraoke.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ChiTietKhuyenMai",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    HoaDonID = table.Column<int>(type: "int", nullable: false),
-                    KhuyenMaiID = table.Column<int>(type: "int", nullable: false),
-                    ThoiDiemApDung = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ChiTietKhuyenMai", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_ChiTietKhuyenMai_HoaDon_HoaDonID",
-                        column: x => x.HoaDonID,
-                        principalTable: "HoaDon",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ChiTietKhuyenMai_KhuyenMai_KhuyenMaiID",
-                        column: x => x.KhuyenMaiID,
-                        principalTable: "KhuyenMai",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ThanhToan",
                 columns: table => new
                 {
@@ -290,16 +268,6 @@ namespace QuanLyQuanKaraoke.Migrations
                 column: "HoaDonID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChiTietKhuyenMai_HoaDonID",
-                table: "ChiTietKhuyenMai",
-                column: "HoaDonID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ChiTietKhuyenMai_KhuyenMaiID",
-                table: "ChiTietKhuyenMai",
-                column: "KhuyenMaiID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_DatPhong_KhachHangID",
                 table: "DatPhong",
                 column: "KhachHangID");
@@ -318,6 +286,11 @@ namespace QuanLyQuanKaraoke.Migrations
                 name: "IX_HoaDon_DatPhongID",
                 table: "HoaDon",
                 column: "DatPhongID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HoaDon_KhuyenMaiID",
+                table: "HoaDon",
+                column: "KhuyenMaiID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Phong_LoaiPhongID",
@@ -353,9 +326,6 @@ namespace QuanLyQuanKaraoke.Migrations
                 name: "ChiTietHoaDon");
 
             migrationBuilder.DropTable(
-                name: "ChiTietKhuyenMai");
-
-            migrationBuilder.DropTable(
                 name: "SuDungDichVu");
 
             migrationBuilder.DropTable(
@@ -365,9 +335,6 @@ namespace QuanLyQuanKaraoke.Migrations
                 name: "ThanhToan");
 
             migrationBuilder.DropTable(
-                name: "KhuyenMai");
-
-            migrationBuilder.DropTable(
                 name: "DichVu");
 
             migrationBuilder.DropTable(
@@ -375,6 +342,9 @@ namespace QuanLyQuanKaraoke.Migrations
 
             migrationBuilder.DropTable(
                 name: "DatPhong");
+
+            migrationBuilder.DropTable(
+                name: "KhuyenMai");
 
             migrationBuilder.DropTable(
                 name: "KhachHang");

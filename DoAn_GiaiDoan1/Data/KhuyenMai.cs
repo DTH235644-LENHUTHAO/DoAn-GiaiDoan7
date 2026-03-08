@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace QuanLyQuanKaraoke.Data
 {
@@ -12,7 +14,8 @@ namespace QuanLyQuanKaraoke.Data
         public int ID { get; set; }
         public string TenKhuyenMai { get; set; }
         public decimal PhanTramGiam { get; set; }
-        public virtual ObservableCollectionListSource<ChiTietKhuyenMai> ChiTietKhuyenMai { get; } = new();
-
+        public virtual ObservableCollectionListSource<HoaDon> HoaDon { get; } = new();
     }
+
+    
 }
