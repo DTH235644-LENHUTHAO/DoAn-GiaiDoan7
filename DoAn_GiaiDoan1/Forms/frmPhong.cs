@@ -34,7 +34,7 @@ namespace QuanLyQuanKaraoke.Forms
             btnHuyBo.Enabled = giaTri;
             txtTenPhong.Enabled = giaTri;
             cboLoaiPhong.Enabled = giaTri;
-            txtTrangThai.Enabled = giaTri;
+            cboTrangThai.Enabled = giaTri;
             picHinhAnh.Enabled = giaTri;
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
@@ -86,8 +86,8 @@ namespace QuanLyQuanKaraoke.Forms
             txtTenPhong.DataBindings.Clear();
             txtTenPhong.DataBindings.Add("Text", bs, "TenPhong", false, DataSourceUpdateMode.Never);
 
-            txtTrangThai.DataBindings.Clear();
-            txtTrangThai.DataBindings.Add("Text", bs, "TrangThai", false, DataSourceUpdateMode.Never);
+            cboTrangThai.DataBindings.Clear();
+            cboTrangThai.DataBindings.Add("Text", bs, "TrangThai", false, DataSourceUpdateMode.Never);
 
             cboLoaiPhong.DataBindings.Clear();
             cboLoaiPhong.DataBindings.Add("SelectedValue", bs, "LoaiPhongID", false, DataSourceUpdateMode.Never);
@@ -111,7 +111,7 @@ namespace QuanLyQuanKaraoke.Forms
             BatTatChucNang(true);
 
             txtTenPhong.Clear();
-            txtTrangThai.Clear();
+            cboTrangThai.SelectedIndex = -1;
             cboLoaiPhong.SelectedIndex = -1;
             picHinhAnh.Image = null;
             hinhAnhTam = "";
@@ -130,7 +130,7 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtTenPhong.Text) || string.IsNullOrWhiteSpace(cboLoaiPhong.Text) || string.IsNullOrWhiteSpace(txtTrangThai.Text))
+            if (string.IsNullOrWhiteSpace(txtTenPhong.Text) || string.IsNullOrWhiteSpace(cboLoaiPhong.Text) || string.IsNullOrWhiteSpace(cboTrangThai.Text))
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
@@ -139,7 +139,7 @@ namespace QuanLyQuanKaraoke.Forms
                 {
                     Phong p = new Phong();
                     p.TenPhong = txtTenPhong.Text;
-                    p.TrangThai = txtTrangThai.Text;
+                    p.TrangThai = cboTrangThai.Text;
                     p.LoaiPhongID = (int)cboLoaiPhong.SelectedValue;
                     p.HinhAnh = hinhAnhTam;
                     context.Phong.Add(p);
@@ -151,7 +151,7 @@ namespace QuanLyQuanKaraoke.Forms
                     if (p != null)
                     {
                         p.TenPhong = txtTenPhong.Text;
-                        p.TrangThai = txtTrangThai.Text;
+                        p.TrangThai = cboTrangThai.Text;
                         p.LoaiPhongID = (int)cboLoaiPhong.SelectedValue;
                         //p.HinhAnh = hinhAnhTam;
                         if (!string.IsNullOrEmpty(hinhAnhTam))

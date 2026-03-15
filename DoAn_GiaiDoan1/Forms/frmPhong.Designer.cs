@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            txtTrangThai = new TextBox();
             label4 = new Label();
             btnThoat = new Button();
             btnHuyBo = new Button();
@@ -43,11 +42,6 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
-            groupBox1 = new GroupBox();
-            btnThemAnh = new Button();
-            btnDoiHinh = new Button();
-            picHinhAnh = new PictureBox();
-            cboLoaiPhong = new ComboBox();
             IDPhong = new DataGridViewTextBoxColumn();
             TenPhong = new DataGridViewTextBoxColumn();
             TenLoaiPhong = new DataGridViewTextBoxColumn();
@@ -55,6 +49,12 @@
             SucChua = new DataGridViewTextBoxColumn();
             GiaGio = new DataGridViewTextBoxColumn();
             HinhAnh = new DataGridViewImageColumn();
+            groupBox1 = new GroupBox();
+            btnThemAnh = new Button();
+            btnDoiHinh = new Button();
+            picHinhAnh = new PictureBox();
+            cboLoaiPhong = new ComboBox();
+            cboTrangThai = new ComboBox();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -65,15 +65,6 @@
             // 
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
-            // 
-            // txtTrangThai
-            // 
-            txtTrangThai.Location = new Point(378, 261);
-            txtTrangThai.Margin = new Padding(4);
-            txtTrangThai.Multiline = true;
-            txtTrangThai.Name = "txtTrangThai";
-            txtTrangThai.Size = new Size(556, 50);
-            txtTrangThai.TabIndex = 13;
             // 
             // label4
             // 
@@ -211,13 +202,62 @@
             dataGridView1.TabIndex = 1;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
+            // IDPhong
+            // 
+            IDPhong.DataPropertyName = "ID";
+            IDPhong.HeaderText = "IDPhong";
+            IDPhong.MinimumWidth = 10;
+            IDPhong.Name = "IDPhong";
+            // 
+            // TenPhong
+            // 
+            TenPhong.DataPropertyName = "TenPhong";
+            TenPhong.HeaderText = "Tên phòng";
+            TenPhong.MinimumWidth = 10;
+            TenPhong.Name = "TenPhong";
+            // 
+            // TenLoaiPhong
+            // 
+            TenLoaiPhong.DataPropertyName = "TenLoaiPhong";
+            TenLoaiPhong.HeaderText = "Loại phòng";
+            TenLoaiPhong.MinimumWidth = 10;
+            TenLoaiPhong.Name = "TenLoaiPhong";
+            // 
+            // TrangThai
+            // 
+            TrangThai.DataPropertyName = "TrangThai";
+            TrangThai.HeaderText = "Trạng thái";
+            TrangThai.MinimumWidth = 10;
+            TrangThai.Name = "TrangThai";
+            // 
+            // SucChua
+            // 
+            SucChua.DataPropertyName = "SucChua";
+            SucChua.HeaderText = "Sức chứa";
+            SucChua.MinimumWidth = 10;
+            SucChua.Name = "SucChua";
+            // 
+            // GiaGio
+            // 
+            GiaGio.DataPropertyName = "GiaGio";
+            GiaGio.HeaderText = "Giá giờ";
+            GiaGio.MinimumWidth = 10;
+            GiaGio.Name = "GiaGio";
+            // 
+            // HinhAnh
+            // 
+            HinhAnh.DataPropertyName = "HinhAnh";
+            HinhAnh.HeaderText = "Hình ảnh";
+            HinhAnh.MinimumWidth = 10;
+            HinhAnh.Name = "HinhAnh";
+            // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(cboTrangThai);
             groupBox1.Controls.Add(btnThemAnh);
             groupBox1.Controls.Add(btnDoiHinh);
             groupBox1.Controls.Add(picHinhAnh);
             groupBox1.Controls.Add(cboLoaiPhong);
-            groupBox1.Controls.Add(txtTrangThai);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnThoat);
             groupBox1.Controls.Add(btnHuyBo);
@@ -275,54 +315,14 @@
             cboLoaiPhong.Size = new Size(556, 44);
             cboLoaiPhong.TabIndex = 14;
             // 
-            // IDPhong
+            // cboTrangThai
             // 
-            IDPhong.DataPropertyName = "ID";
-            IDPhong.HeaderText = "IDPhong";
-            IDPhong.MinimumWidth = 10;
-            IDPhong.Name = "IDPhong";
-            // 
-            // TenPhong
-            // 
-            TenPhong.DataPropertyName = "TenPhong";
-            TenPhong.HeaderText = "Tên phòng";
-            TenPhong.MinimumWidth = 10;
-            TenPhong.Name = "TenPhong";
-            // 
-            // TenLoaiPhong
-            // 
-            TenLoaiPhong.DataPropertyName = "TenLoaiPhong";
-            TenLoaiPhong.HeaderText = "Loại phòng";
-            TenLoaiPhong.MinimumWidth = 10;
-            TenLoaiPhong.Name = "TenLoaiPhong";
-            // 
-            // TrangThai
-            // 
-            TrangThai.DataPropertyName = "TrangThai";
-            TrangThai.HeaderText = "Trạng thái";
-            TrangThai.MinimumWidth = 10;
-            TrangThai.Name = "TrangThai";
-            // 
-            // SucChua
-            // 
-            SucChua.DataPropertyName = "SucChua";
-            SucChua.HeaderText = "Sức chứa";
-            SucChua.MinimumWidth = 10;
-            SucChua.Name = "SucChua";
-            // 
-            // GiaGio
-            // 
-            GiaGio.DataPropertyName = "GiaGio";
-            GiaGio.HeaderText = "Giá giờ";
-            GiaGio.MinimumWidth = 10;
-            GiaGio.Name = "GiaGio";
-            // 
-            // HinhAnh
-            // 
-            HinhAnh.DataPropertyName = "HinhAnh";
-            HinhAnh.HeaderText = "Hình ảnh";
-            HinhAnh.MinimumWidth = 10;
-            HinhAnh.Name = "HinhAnh";
+            cboTrangThai.FormattingEnabled = true;
+            cboTrangThai.Items.AddRange(new object[] { "Bình thường", "Bảo trì" });
+            cboTrangThai.Location = new Point(378, 272);
+            cboTrangThai.Name = "cboTrangThai";
+            cboTrangThai.Size = new Size(556, 44);
+            cboTrangThai.TabIndex = 18;
             // 
             // frmPhong
             // 
@@ -347,7 +347,6 @@
         #endregion
 
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
-        private TextBox txtTrangThai;
         private Label label4;
         private Button btnThoat;
         private Button btnHuyBo;
@@ -373,5 +372,6 @@
         private DataGridViewTextBoxColumn SucChua;
         private DataGridViewTextBoxColumn GiaGio;
         private DataGridViewImageColumn HinhAnh;
+        private ComboBox cboTrangThai;
     }
 }

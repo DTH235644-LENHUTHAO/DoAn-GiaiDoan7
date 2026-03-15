@@ -216,6 +216,14 @@ namespace QuanLyQuanKaraoke.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("MatKhau")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenDangNhap")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TenNV")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -278,40 +286,6 @@ namespace QuanLyQuanKaraoke.Migrations
                     b.HasIndex("DichVuID");
 
                     b.ToTable("SuDungDichVu");
-                });
-
-            modelBuilder.Entity("QuanLyQuanKaraoke.Data.TaiKhoan", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("MatKhau")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NhanVienID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TenDangNhap")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TrangThai")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("VaiTro")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("NhanVienID")
-                        .IsUnique();
-
-                    b.ToTable("TaiKhoan");
                 });
 
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.ThanhToan", b =>
@@ -427,17 +401,6 @@ namespace QuanLyQuanKaraoke.Migrations
                     b.Navigation("DichVu");
                 });
 
-            modelBuilder.Entity("QuanLyQuanKaraoke.Data.TaiKhoan", b =>
-                {
-                    b.HasOne("QuanLyQuanKaraoke.Data.NhanVien", "NhanVien")
-                        .WithOne("TaiKhoan")
-                        .HasForeignKey("QuanLyQuanKaraoke.Data.TaiKhoan", "NhanVienID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("NhanVien");
-                });
-
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.ThanhToan", b =>
                 {
                     b.HasOne("QuanLyQuanKaraoke.Data.HoaDon", "HoaDon")
@@ -486,8 +449,6 @@ namespace QuanLyQuanKaraoke.Migrations
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.NhanVien", b =>
                 {
                     b.Navigation("DatPhong");
-
-                    b.Navigation("TaiKhoan");
                 });
 
             modelBuilder.Entity("QuanLyQuanKaraoke.Data.Phong", b =>

@@ -13,8 +13,9 @@ namespace QuanLyQuanKaraoke.Data
         public string TenNV { get; set; }
         public string ChucVu { get; set; }
         public string DienThoai { get; set; }
+        public string TenDangNhap   { get; set; }
+        public string MatKhau { get; set; }
 
-        public virtual TaiKhoan? TaiKhoan { get; set; } = null;
         public virtual ObservableCollectionListSource<DatPhong> DatPhong { get; } = new();
 
 

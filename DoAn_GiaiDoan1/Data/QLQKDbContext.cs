@@ -21,21 +21,10 @@ namespace QuanLyQuanKaraoke.Data
         public DbSet<SuDungDichVu> SuDungDichVu { get; set; }
         public DbSet<ThanhToan> ThanhToan { get; set; }
         public DbSet<LoaiPhong> LoaiPhong { get; set; }
-        public DbSet<TaiKhoan> TaiKhoan { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer( ConfigurationManager.ConnectionStrings["QLQKConnection"].ConnectionString);
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<TaiKhoan>()
-                .HasOne(tk => tk.NhanVien)
-                .WithOne(nv => nv.TaiKhoan)
-                .HasForeignKey<TaiKhoan>(tk => tk.NhanVienID)
-                .OnDelete(DeleteBehavior.Cascade);
-        }
     }
 }

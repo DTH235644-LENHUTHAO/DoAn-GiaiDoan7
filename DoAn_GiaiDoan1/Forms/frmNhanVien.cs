@@ -30,6 +30,8 @@ namespace QuanLyQuanKaraoke.Forms
             txtTenNV.Enabled = giaTri;
             txtChucVu.Enabled = giaTri;
             txtDienThoai.Enabled = giaTri;
+            txtTenDangNhap.Enabled = giaTri;
+            txtMatKhau.Enabled = giaTri;
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
@@ -48,6 +50,10 @@ namespace QuanLyQuanKaraoke.Forms
             txtChucVu.DataBindings.Add("Text", bindingSource, "ChucVu", false, DataSourceUpdateMode.Never);
             txtDienThoai.DataBindings.Clear();
             txtDienThoai.DataBindings.Add("Text", bindingSource, "DienThoai", false, DataSourceUpdateMode.Never);
+            txtTenDangNhap.DataBindings.Clear();
+            txtTenDangNhap.DataBindings.Add("Text", bindingSource, "TenDangNhap", false, DataSourceUpdateMode.Never);
+            txtMatKhau.DataBindings.Clear();
+            txtMatKhau.DataBindings.Add("Text", bindingSource, "MatKhau", false, DataSourceUpdateMode.Never);
 
             dataGridView1.DataSource = bindingSource;
         }
@@ -59,6 +65,8 @@ namespace QuanLyQuanKaraoke.Forms
             txtTenNV.Clear();
             txtChucVu.Clear();
             txtDienThoai.Clear();
+            txtTenDangNhap.Clear();
+            txtMatKhau.Clear();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -81,6 +89,9 @@ namespace QuanLyQuanKaraoke.Forms
                     nv.TenNV = txtTenNV.Text;
                     nv.ChucVu = txtChucVu.Text;
                     nv.DienThoai = txtDienThoai.Text;
+                    nv.TenDangNhap = txtTenDangNhap.Text;
+                    //nv.MatKhau = txtMatKhau.Text;
+                    nv.MatKhau = BCrypt.Net.BCrypt.HashPassword(txtMatKhau.Text);
                     context.NhanVien.Add(nv);
                     context.SaveChanges();
                 }
@@ -92,6 +103,9 @@ namespace QuanLyQuanKaraoke.Forms
                         nv.TenNV = txtTenNV.Text;
                         nv.ChucVu = txtChucVu.Text;
                         nv.DienThoai = txtDienThoai.Text;
+                        nv.TenDangNhap = txtTenDangNhap.Text;
+                        //nv.MatKhau = txtMatKhau.Text;
+                        nv.MatKhau = BCrypt.Net.BCrypt.HashPassword(txtMatKhau.Text);
                         context.NhanVien.Update(nv);
                         context.SaveChanges();
                     }
@@ -174,6 +188,8 @@ namespace QuanLyQuanKaraoke.Forms
                                 nv.TenNV = r["TenNV"].ToString();
                                 nv.ChucVu = r["ChucVu"].ToString();
                                 nv.DienThoai = r["DienThoai"].ToString();
+                                nv.TenDangNhap = r["TenDangNhap"].ToString();
+                                nv.MatKhau = r["MatKhau"].ToString();
                                 context.NhanVien.Add(nv);
                             }
                             context.SaveChanges();
@@ -202,17 +218,19 @@ namespace QuanLyQuanKaraoke.Forms
                 try
                 {
                     DataTable table = new DataTable();
-                    table.Columns.AddRange(new DataColumn[4] {
+                    table.Columns.AddRange(new DataColumn[6] {
                     new DataColumn("ID", typeof(int)),
                     new DataColumn("TenNV", typeof(string)),
                     new DataColumn("ChucVu", typeof(string)),
-                    new DataColumn("DienThoai", typeof(string))
+                    new DataColumn("DienThoai", typeof(string)),
+                    new DataColumn("TenDangNhap", typeof(string)),
+                    new DataColumn("MatKhau", typeof(string))
                     });
                     var nhanVien = context.NhanVien.ToList();
                     if (nhanVien != null)
                     {
                         foreach (var p in nhanVien)
-                            table.Rows.Add(p.ID, p.TenNV,p.ChucVu,p.DienThoai);
+                            table.Rows.Add(p.ID, p.TenNV,p.ChucVu,p.DienThoai,p.TenDangNhap,p.MatKhau);
                     }
                     using (XLWorkbook wb = new XLWorkbook())
                     {
