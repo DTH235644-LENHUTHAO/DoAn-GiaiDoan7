@@ -12,7 +12,7 @@ using QuanLyQuanKaraoke.Data;
 namespace QuanLyQuanKaraoke.Migrations
 {
     [DbContext(typeof(QLQKDbContext))]
-    [Migration("20260321085120_KhoiTaoCSDL")]
+    [Migration("20260323132936_KhoiTaoCSDL")]
     partial class KhoiTaoCSDL
     {
         /// <inheritdoc />
@@ -32,9 +32,6 @@ namespace QuanLyQuanKaraoke.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<decimal>("DonGia")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("GhiChu")
                         .IsRequired()

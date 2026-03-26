@@ -39,8 +39,6 @@ namespace QuanLyQuanKaraoke.Data
         public DateTime ThoiGianBatDau { get; set; }
         public DateTime? ThoiGianKetThuc { get; set; }
         
-        
-        
     }
 
 }

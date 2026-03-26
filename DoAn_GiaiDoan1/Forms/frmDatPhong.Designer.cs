@@ -40,8 +40,10 @@
             ThoiGianBatDau = new DataGridViewTextBoxColumn();
             ThoiGianKetThuc = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
+            btnLapHoaDon = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -137,13 +139,24 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnLapHoaDon);
             groupBox2.Location = new Point(22, 19);
             groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4);
-            groupBox2.Size = new Size(1487, 277);
+            groupBox2.Size = new Size(1951, 277);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
+            // 
+            // btnLapHoaDon
+            // 
+            btnLapHoaDon.Location = new Point(1649, 113);
+            btnLapHoaDon.Name = "btnLapHoaDon";
+            btnLapHoaDon.Size = new Size(225, 46);
+            btnLapHoaDon.TabIndex = 0;
+            btnLapHoaDon.Text = "Lập hóa đơn";
+            btnLapHoaDon.UseVisualStyleBackColor = true;
+            btnLapHoaDon.Click += btnLapHoaDon_Click;
             // 
             // frmDatPhong
             // 
@@ -159,6 +172,7 @@
             Load += frmDatPhong_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -176,5 +190,6 @@
         private DataGridViewTextBoxColumn TenNhanVien;
         private DataGridViewTextBoxColumn ThoiGianBatDau;
         private DataGridViewTextBoxColumn ThoiGianKetThuc;
+        private Button btnLapHoaDon;
     }
 }

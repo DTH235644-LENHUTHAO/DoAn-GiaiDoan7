@@ -24,7 +24,10 @@ namespace QuanLyQuanKaraoke.Forms
         {
             dataGridView1.AutoGenerateColumns = false;
             List<DanhSachDatPhong> dp = new List<DanhSachDatPhong>();
-            dp = context.DatPhong.Select(r => new DanhSachDatPhong
+            dp = context.DatPhong
+                .OrderBy(r => r.ThoiGianKetThuc == null ? 0 : 1) // đang hát lên trước
+                .ThenByDescending(r => r.ThoiGianBatDau) // mới nhất
+                .Select(r => new DanhSachDatPhong
             {
                 ID = r.ID,
                 PhongID = r.PhongID,
@@ -33,10 +36,24 @@ namespace QuanLyQuanKaraoke.Forms
                 TenKhachHang = r.KhachHang.TenKH,
                 NhanVienID = r.NhanVienID,
                 TenNhanVien = r.NhanVien.TenNV,
-                ThoiGianBatDau= r.ThoiGianBatDau,
+                ThoiGianBatDau = r.ThoiGianBatDau,
                 ThoiGianKetThuc = r.ThoiGianKetThuc
             }).ToList();
             dataGridView1.DataSource = dp;
+        }
+
+        private void btnLapHoaDon_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Chọn 1 dòng!");
+                return;
+            }
+
+            int datPhongID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value);
+
+            frmHoaDon f = new frmHoaDon(datPhongID);
+            f.ShowDialog();
         }
     }
 }

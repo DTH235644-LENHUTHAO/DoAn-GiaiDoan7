@@ -28,6 +28,8 @@ namespace QuanLyQuanKaraoke.Forms
         frmLoaiPhong loaiPhong = null;
         frmDangNhap dangNhap = null;
         frmDanhSachPhong danhsachPhong = null;
+        frmDatPhong datPhong = null;
+        frmDanhSachHoaDon danhsachhoaDon = null;
         string TenNhanVien = "";
         public static int NVID = 0;
         private void mnuNhanVien_Click(object sender, EventArgs e)
@@ -176,7 +178,7 @@ namespace QuanLyQuanKaraoke.Forms
             mnuDichVu.Enabled = false;
             mnuKhachHang.Enabled = false;
             mnuNhanVien.Enabled = false;
-            mnuHoaDon.Enabled = false;
+            mnuDanhSachHoaDon.Enabled = false;
             mnuThongKeDichVu.Enabled = false;
             mnuThongKeDoanhThu.Enabled = false;
             // Hiển thị thông tin trên thanh trạng thái
@@ -195,7 +197,7 @@ namespace QuanLyQuanKaraoke.Forms
             mnuDichVu.Enabled = true;
             mnuKhachHang.Enabled = true;
             mnuNhanVien.Enabled = true;
-            mnuHoaDon.Enabled = true;
+            mnuDanhSachHoaDon.Enabled = true;
             mnuThongKeDichVu.Enabled = true;
             mnuThongKeDoanhThu.Enabled = true;
             // Hiển thị thông tin trên thanh trạng thái
@@ -214,7 +216,7 @@ namespace QuanLyQuanKaraoke.Forms
             mnuDangXuat.Enabled = true;
             mnuDoiMatKhau.Enabled = true;
             mnuKhachHang.Enabled = true;
-            mnuHoaDon.Enabled = true;
+            mnuDanhSachHoaDon.Enabled = true;
             mnuThongKeDichVu.Enabled = false;
             mnuThongKeDoanhThu.Enabled = false;
             // Hiển thị thông tin trên thanh trạng thái
@@ -243,7 +245,7 @@ namespace QuanLyQuanKaraoke.Forms
 
         private void mnuDanhSachPhong_Click(object sender, EventArgs e)
         {
-            if (danhsachPhong  == null || danhsachPhong.IsDisposed)
+            if (danhsachPhong == null || danhsachPhong.IsDisposed)
             {
                 danhsachPhong = new frmDanhSachPhong();
                 danhsachPhong.MdiParent = this;
@@ -251,6 +253,30 @@ namespace QuanLyQuanKaraoke.Forms
             }
             else
                 danhsachPhong.Activate();
+        }
+
+        private void mnuLichSuDungPhong_Click(object sender, EventArgs e)
+        {
+            if (datPhong == null || datPhong.IsDisposed)
+            {
+                datPhong = new frmDatPhong();
+                datPhong.MdiParent = this;
+                datPhong.Show();
+            }
+            else
+                datPhong.Activate();
+        }
+
+        private void mnuDanhSachHoaDon_Click(object sender, EventArgs e)
+        {
+            if (danhsachhoaDon == null || datPhong.IsDisposed)
+            {
+                danhsachhoaDon = new frmDanhSachHoaDon();
+                danhsachhoaDon.MdiParent = this;
+                danhsachhoaDon.Show();
+            }
+            else
+                danhsachhoaDon.Activate();
         }
     }
 }

@@ -30,9 +30,6 @@ namespace QuanLyQuanKaraoke.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<decimal>("DonGia")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("GhiChu")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
